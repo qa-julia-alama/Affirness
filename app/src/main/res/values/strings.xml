@@ -1,4 +1,11 @@
 <resources>
-    <string name="app_name">WhiteDots</string>
-    <string name="roll">Let\'s roll!</string>
+    <string name="app_name">Affirness</string>
+    <string name="roll">touch me</string>
+    <string name="affirmation1">I\'m strong.</string>
+    <string name="affirmation2">I believe in myself.</string>
+    <string name="affirmation3">I\'m enough.</string>
+    <string name="affirmation4">I\'m powerful.</string>
+    <string name="affirmation5">I\'m blessed.</string>
+    <string name="affirmation6">I\'m kind.</string>
+    <string name="affirmation7">I feel so good.</string>
 </resources>

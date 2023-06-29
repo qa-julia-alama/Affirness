@@ -28,7 +28,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun DiceRollerAppTheme(
+fun AffirnessApp(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+, set to false for training purposes.
     dynamicColor: Boolean = false,
