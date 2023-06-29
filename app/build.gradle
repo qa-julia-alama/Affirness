@@ -8,7 +8,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.dicerollerapp"
+        applicationId 'com.alamajulia.affirness'
         minSdk 25
         targetSdk 33
         versionCode 1
