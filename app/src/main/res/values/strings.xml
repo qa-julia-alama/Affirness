@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Affirness</string>
-    <string name="roll">touch me</string>
+    <string name="touch"> touch me </string>
+    <string name="share"> share me </string>
+
     <string name="affirmation1">I\'m strong.</string>
     <string name="affirmation2">I believe in myself.</string>
     <string name="affirmation3">I\'m enough.</string>
@@ -66,7 +68,6 @@
     <string name="affirmation63">I love myself.</string>
     <string name="affirmation64">Now is my time.</string>
     <string name="affirmation65">My possibilities are endless.</string>
-    <string name="affirmation66">I want to see what I can accomplish.</string>
     <string name="affirmation67">I make my life happen.</string>
     <string name="affirmation68">I make my life happy.</string>
     <string name="affirmation69">I put my heart into everything I do.</string>
@@ -78,7 +79,7 @@
     <string name="affirmation75">My heart says “yes”.</string>
     <string name="affirmation76">I believe in me.</string>
     <string name="affirmation77">I see a bright future for myself.</string>
-    <string name="affirmation78">The world is better because I am here.</string>
+    <string name="affirmation78">The world is better - I\'m here.</string>
     <string name="affirmation79">I make a difference.</string>
     <string name="affirmation80">Life is fun.</string>
     <string name="affirmation81">I am ready for whatever comes.</string>

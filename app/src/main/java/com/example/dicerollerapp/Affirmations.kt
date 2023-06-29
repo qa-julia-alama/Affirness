@@ -75,7 +75,6 @@ class Affirmations {
                     stringResource(R.string.affirmation63),
                     stringResource(R.string.affirmation64),
                     stringResource(R.string.affirmation65),
-                    stringResource(R.string.affirmation66),
                     stringResource(R.string.affirmation67),
                     stringResource(R.string.affirmation68),
                     stringResource(R.string.affirmation69),
