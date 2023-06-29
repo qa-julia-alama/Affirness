@@ -1,16 +1,11 @@
 package com.example.dicerollerapp
 
-import android.app.Activity
 import android.content.ContentValues.TAG
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.ManagedActivityResultLauncher
-import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -34,6 +29,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import com.example.dicerollerapp.ui.theme.AffirnessApp
 import com.example.dicerollerapp.ui.theme.JulkaGray
 import kotlin.math.absoluteValue
@@ -70,27 +66,8 @@ fun Affirness() {
     val (result, setResult) = remember { mutableStateOf(1) }
     val context = LocalContext.current
 
-    val shareLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.StartActivityForResult()
-    ) { launchResult ->
-        if (launchResult.resultCode == Activity.RESULT_OK) {
-            val affirmation = if (result > 0) affirmations[result - 1] else ""
-            val shareIntent = Intent(Intent.ACTION_SEND).apply {
-                type = "text/plain"
-                putExtra(Intent.EXTRA_SUBJECT, "Share Affirmation")
-                putExtra(Intent.EXTRA_TEXT, affirmation)
-            }
-
-            val chooserIntent = Intent.createChooser(shareIntent, "Share")
-            val activities = context.packageManager.queryIntentActivities(
-                chooserIntent,
-                PackageManager.MATCH_DEFAULT_ONLY
-            )
-            val packageNames = activities.map { it.activityInfo.packageName }.toTypedArray()
-
-            chooserIntent.putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS, packageNames)
-            context.startActivity(chooserIntent)
-        }
+    fun getChosenAffirmation(): String {
+        return affirmations[result - 1]
     }
 
     Column(
@@ -99,7 +76,7 @@ fun Affirness() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = affirmations[result.absoluteValue - 1],
+            text = getChosenAffirmation(),
             fontSize = 24.sp,
             modifier = Modifier.padding(bottom = 70.dp)
         )
@@ -127,7 +104,27 @@ fun Affirness() {
         Spacer(modifier = Modifier.height(16.dp))
         Button(
             onClick = {
-                shareLauncher.launch(Bundle())
+                val sharingIntent = Intent(Intent.ACTION_SEND)
+
+                // type of the content to be shared
+                sharingIntent.type = "text/plain"
+
+                // Body of the content
+                val shareBody = "Affirmation of the day: \"" + getChosenAffirmation() + "\""
+
+                // subject of the content. you can share anything
+                val shareSubject = "Affirmation"
+
+                // passing body of the content
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+
+                // passing subject of the content
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject)
+                startActivity(
+                    context,
+                    Intent.createChooser(sharingIntent, "Share using"),
+                    null
+                )
             },
         ) {
             Text(
@@ -137,8 +134,4 @@ fun Affirness() {
             )
         }
     }
-}
-
-private fun <I, O> ManagedActivityResultLauncher<I, O>.launch(bundle: Bundle) {
-
 }
