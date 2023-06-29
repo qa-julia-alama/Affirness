@@ -9,3 +9,5 @@ val LightGrey80 = Color(0xFF2C2C2C)
 val LightGrey40 = Color(0xFF272727)
 val Grey40 = Color(0xFF272727)
 val LightGrey30 = Color(0xFF2C2C2C)
+
+val JulkaGray = Color(0xFF1C1818)
