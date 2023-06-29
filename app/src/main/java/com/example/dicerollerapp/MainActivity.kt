@@ -62,15 +62,8 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun Affirness() {
-    val affirmations = listOf(
-            stringResource(R.string.affirmation1),
-            stringResource(R.string.affirmation2),
-            stringResource(R.string.affirmation3),
-            stringResource(R.string.affirmation4),
-            stringResource(R.string.affirmation5),
-            stringResource(R.string.affirmation6)
-    )
 
+    val affirmations = Affirmations().affirmations
     val (result, setResult) = remember { mutableStateOf(1) }
 
     Column(
@@ -86,7 +79,7 @@ fun Affirness() {
         Button(
                 onClick = {
                     val previousResult = result.absoluteValue
-                    var newResult = (1..6).random()
+                    var newResult = (1..affirmations.size).random()
                     if (previousResult == newResult) {
                         Log.d(TAG, "Affirness: Same result!")
                         if (newResult > 1) {
